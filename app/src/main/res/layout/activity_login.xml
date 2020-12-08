@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/iv"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="For D2D 2020 only"
+        android:text=""
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +33,8 @@
 
     <EditText
         android:id="@+id/edtid"
-        android:layout_width="200sp"
-        android:layout_height="40sp"
+        android:layout_width="@dimen/_160sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="32dp"
         android:background="@drawable/text_view_white"
         android:hint="User ID"
@@ -48,8 +48,8 @@
 
     <EditText
         android:id="@+id/edtpass"
-        android:layout_width="200sp"
-        android:layout_height="40sp"
+        android:layout_width="@dimen/_160sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="16dp"
         android:background="@drawable/text_view_white"
         android:hint="Password"
@@ -62,17 +62,17 @@
         app:layout_constraintStart_toStartOf="@+id/edtid"
         app:layout_constraintTop_toBottomOf="@+id/edtid" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnlogin"
-        android:layout_width="70sp"
-        android:layout_height="70sp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
         android:layout_marginTop="32dp"
         android:background="@drawable/submit_btn"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:foreground="?selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtpass" />
 

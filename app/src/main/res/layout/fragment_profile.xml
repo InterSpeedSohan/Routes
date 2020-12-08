@@ -22,8 +22,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_90sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_width="@dimen/_70sdp"
         android:src="@drawable/ic_profile"
         app:civ_border_color="@android:color/white"
         app:civ_border_width="2dp"
@@ -72,14 +72,190 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTodayCount" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileLayout">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.ramijemli.percentagechartview.PercentageChartView
+                android:id="@+id/today_chart"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pcv_animDuration="800"
+                app:pcv_animInterpolator="accelerate"
+                app:pcv_backgroundBarColor="@color/ash"
+                app:pcv_gradientColors="#4CAF50, #900c3e"
+                app:pcv_gradientType="linear"
+                app:pcv_mode="ring"
+                app:pcv_orientation="clockwise"
+                app:pcv_progress="0"
+                app:pcv_startAngle="270"
+                app:pcv_textColor="@color/black" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/today_chart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/today_chart"
+                app:layout_constraintTop_toTopOf="@+id/today_chart">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today achievement"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/today_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today count: 40"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                <TextView
+                    android:id="@+id/today_target"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today target: 50"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/today_count"
+                    app:layout_constraintTop_toBottomOf="@+id/today_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.ramijemli.percentagechartview.PercentageChartView
+                android:id="@+id/total_chart"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/today_chart"
+                app:pcv_animDuration="800"
+                app:pcv_animInterpolator="accelerate"
+                app:pcv_backgroundBarColor="@color/ash"
+                app:pcv_gradientColors="#4CAF50, #900c3e"
+                app:pcv_gradientType="linear"
+                app:pcv_mode="ring"
+                app:pcv_orientation="clockwise"
+                app:pcv_progress="0"
+                app:pcv_startAngle="270"
+                app:pcv_textColor="@color/black" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/total_chart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/total_chart"
+                app:layout_constraintTop_toTopOf="@+id/total_chart">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total achievement"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/total_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total count: 400"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/textView5"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                <TextView
+                    android:id="@+id/total_target"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total target: 1000"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/total_count"
+                    app:layout_constraintTop_toBottomOf="@+id/total_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bar_chart"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/total_chart">
+
+                <com.hadiidbouk.charts.ChartProgressBar
+                    android:id="@+id/ChartProgressBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    app:hdBarCanBeClick="true"
+                    app:hdBarHeight="120dp"
+                    app:hdBarRadius="10dp"
+                    app:hdBarTitleColor="@color/bar_title_color"
+                    app:hdBarTitleMarginTop="15dp"
+                    app:hdBarTitleSelectedColor="@color/black"
+                    app:hdBarTitleTxtSize="12sp"
+                    app:hdBarWidth="40dp"
+                    app:hdEmptyColor="@color/barChartUnfill"
+                    app:hdMaxValue="100"
+                    app:hdPinBackgroundColor="@color/pin_background"
+                    app:hdPinDrawable="@drawable/ic_pin"
+                    app:hdPinMarginBottom="22dp"
+                    app:hdPinMarginEnd="11dp"
+                    app:hdPinMarginTop="0dp"
+                    app:hdPinPaddingBottom="5dp"
+                    app:hdPinTextColor="@color/white"
+                    app:hdPinTxtSize="11sp"
+                    app:hdProgressClickColor="@color/progress"
+                    app:hdProgressColor="@color/progress"
+                    app:hdProgressDisableColor="@color/progress_disable"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bar_chart">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

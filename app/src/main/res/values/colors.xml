@@ -15,4 +15,7 @@
     <color name="ash">#7E7D7D</color>
     <color name="black_red">#900c3e</color>
     <color name="light_orange">#ED664A</color>
+
+    <color name="green">#4CAF50</color>
+    <color name="blue">#3F51B5</color>
 </resources>

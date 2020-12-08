@@ -27,6 +27,14 @@ public class User {
         }
         return user;
     }
+    public void setValuesFromSharedPreference(SharedPreferences sharedPreference)
+    {
+        this.name = sharedPreference.getString("name",null);
+        this.teamId = sharedPreference.getString("id",null);
+        this.userId = sharedPreference.getString("id",null);
+        this.area = sharedPreference.getString("area",null);
+        this.teamName = sharedPreference.getString("team",null);
+    }
     public static User createInstance(String name,String teamId,String userId,String area, String teamName)
     {
         if(user == null)

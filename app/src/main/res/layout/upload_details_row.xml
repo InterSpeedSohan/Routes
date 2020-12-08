@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/rowLayout"
     android:background="@color/ash"
+    android:clickable="true"
     android:foreground="?selectableItemBackground"
     android:layout_height="wrap_content">
 

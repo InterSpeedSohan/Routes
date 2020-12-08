@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         user = User.getInstance();
         if(user.isUserInSharedpreference(sharedPreferences, "id"))
         {
+            user.setValuesFromSharedPreference(sharedPreferences);
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();

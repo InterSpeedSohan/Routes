@@ -9,7 +9,8 @@
         motion:duration="1000">
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:touchAnchorId="@+id/recycler_view" />
+            motion:touchAnchorId="@+id/nested_scroll_view"
+            />
        <KeyFrameSet>
        </KeyFrameSet>
     </Transition>
@@ -26,8 +27,8 @@
             android:id="@+id/profile_image"
             android:elevation="5dp"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_width="@dimen/_70sdp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp" />
@@ -41,34 +42,39 @@
             android:layout_marginTop="8dp" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/text_name"
             android:id="@+id/txtTeam"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            motion:layout_constraintStart_toStartOf="@+id/text_name" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/txtTeam"
-            android:id="@+id/txtTodayCount" />
+            android:id="@+id/txtTodayCount"
+            motion:layout_constraintStart_toStartOf="@+id/txtTeam" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/txtTodayCount"
-            android:id="@+id/txtTotalCount" />
+            android:id="@+id/txtTotalCount"
+            motion:layout_constraintStart_toStartOf="@+id/txtTodayCount" />
         <Constraint
-            android:id="@+id/recycler_view"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            motion:layout_constraintTop_toBottomOf="@+id/profileLayout"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent" />
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/profileLayout" />
+        <Constraint
+            android:layout_height="0dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            motion:layout_constraintTop_toBottomOf="@+id/profileLayout"
+            android:id="@+id/nested_scroll_view"
+            motion:layout_constraintEnd_toEndOf="parent" />
 
 
     </ConstraintSet>
@@ -90,12 +96,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp" >
-            <CustomAttribute
-                motion:attributeName="scaleX"
-                motion:customFloatValue="0.7" />
-            <CustomAttribute
-                motion:attributeName="scaleY"
-                motion:customFloatValue="0.7" />
         </Constraint>
         <Constraint
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             motion:layout_constraintTop_toBottomOf="@+id/profileLayout"
             android:id="@+id/recycler_view" />
         <Constraint
-            android:id="@+id/recycler_view"
+            android:id="@+id/nested_scroll_view"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
