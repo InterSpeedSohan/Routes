@@ -11,11 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.graphics.ColorUtils;
+import androidx.constraintlayout.widget.ConstraintLayout;;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,15 +23,16 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.routes.MainActivity;
 import com.example.routes.R;
 import com.example.routes.databinding.FragmentProfileBinding;
 import com.example.routes.login.LoginActivity;
 import com.example.routes.user.User;
 import com.example.routes.utils.CustomUtility;
 import com.example.routes.utils.MySingleton;
+import com.hadiidbouk.charts.BarData;
+import com.hadiidbouk.charts.ChartProgressBar;
+import com.hadiidbouk.charts.OnBarClickedListener;
 import com.ramijemli.percentagechartview.PercentageChartView;
-import com.ramijemli.percentagechartview.callback.AdaptiveColorProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +55,13 @@ public class ProfileFragment extends Fragment {
     User user;
     SweetAlertDialog pDialog;
     JSONObject jsonObject;
+
+    ChartProgressBar mChart;
+    ContextCompat contextCompat;
+
+    Map<String, String> monthMap = new HashMap<String, String>(){{put("Jan","01");put("Feb","2"); put("Mar","3"); put("Apr","4");put("May","5");put("Jun","6");
+        put("Jul","7");put("Aug","8"); put("Sep","9"); put("Oct","10");put("Nov","11");put("Dec","12");
+    }};
 
     private List<UploadDetails> dataList = new ArrayList<>();
 
@@ -106,7 +112,8 @@ public class ProfileFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
 
        // getStatus();
-        getList();
+        //getList("Dec");
+        createChart();
 
 
         PercentageChartView todayChart = binding.todayChart;
@@ -208,36 +215,45 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void createChart(View root) {
+    private void createChart() {
         ArrayList<BarData> dataList = new ArrayList<>();
 
-        BarData data = new BarData("Sep", 30.4f, "300.4$");
+        BarData data = new BarData("Jul", 1.8f, "10");
         dataList.add(data);
 
-        data = new BarData("Oct", 42f, "420$");
+        data = new BarData("Aug", 50.8f, "330");
         dataList.add(data);
 
-        data = new BarData("Nov", 10.8f, "100.8$");
+        data = new BarData("Sep", 81.8f, "500");
         dataList.add(data);
 
-        data = new BarData("Dec", 87.3f, "870.3$");
+        data = new BarData("Oct", 40.8f, "310");
         dataList.add(data);
 
-        data = new BarData("Jan", 36.2f, "360.2$");
+        data = new BarData("Nov", 90.8f, "770");
         dataList.add(data);
 
-        data = new BarData("Feb", 99.3f, "990.3$");
+        data = new BarData("Dec", 71.8f, "610");
         dataList.add(data);
 
-        data = new BarData("Nov", 71.8f, "710.8$");
-        dataList.add(data);
-
-        mChart = (ChartProgressBar) root.findViewById(R.id.ChartProgressBar);
+        mChart = (ChartProgressBar) binding.ChartProgressBar;
         mChart.setDataList(dataList);
-//        mChart.build();
+        mChart.build();
+
+        //mChart.selectBar(mChart.getData().size()-1);
+
+        mChart.setOnBarClickedListener(new OnBarClickedListener() {
+            @Override
+            public void onBarClicked(int index) {
+                Log.d("bar_selected", String.valueOf(mChart.getData(index).getBarTitle()));
+                getList(mChart.getData(index).getBarTitle());
+            }
+        });
+
+
 //        Toast.makeText(getApplicationContext(), "date : "+sdf.format(myCalendar.getTime()), Toast.LENGTH_SHORT).show();
     }
-    private void getList() {
+    private void getList(String month) {
 
         dataList.clear();
 
@@ -309,9 +325,9 @@ public class ProfileFragment extends Fragment {
 
         MySingleton.getInstance(SalesRecordActivity.this).addToRequestQue(stringRequest);
         */
-        for(int i = 1; i<50; i++)
+        for(int i = 1; i<30; i++)
         {
-            dataList.add(new UploadDetails(String.valueOf(i+7)+"-12-2020","11.30am"));
+            dataList.add(new UploadDetails(String.valueOf(i)+"-"+monthMap.get(month)+"-2020","11.30am"));
         }
         mAdapter.notifyDataSetChanged();
     }

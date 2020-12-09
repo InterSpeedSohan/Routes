@@ -17,7 +17,7 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:layout_height="@dimen/_200sdp"
+            android:layout_height="@dimen/_180sdp"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
@@ -118,18 +118,16 @@
             android:layout_marginTop="16dp" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/txtTeam"
             android:id="@+id/txtTodayCount"
-            motion:layout_constraintStart_toEndOf="@+id/profile_image" />
+            motion:layout_constraintStart_toStartOf="@+id/txtTeam" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="@+id/profileLayout"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/txtTodayCount"
-            android:id="@+id/txtTotalCount"
-            motion:layout_constraintStart_toEndOf="@+id/profile_image" />
+            motion:layout_constraintStart_toStartOf="@+id/txtTodayCount"
+            android:id="@+id/txtTotalCount" />
         <Constraint
             android:layout_height="0dp"
             motion:layout_constraintStart_toStartOf="parent"

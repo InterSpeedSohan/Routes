@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="@dimen/_180sdp"
         android:background="@drawable/side_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +76,7 @@
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileLayout">
@@ -96,7 +97,7 @@
                 app:pcv_animDuration="800"
                 app:pcv_animInterpolator="accelerate"
                 app:pcv_backgroundBarColor="@color/ash"
-                app:pcv_gradientColors="#4CAF50, #900c3e"
+                app:pcv_gradientColors="#4CAF50, #c70039"
                 app:pcv_gradientType="linear"
                 app:pcv_mode="ring"
                 app:pcv_orientation="clockwise"
@@ -156,7 +157,7 @@
                 app:pcv_animDuration="800"
                 app:pcv_animInterpolator="accelerate"
                 app:pcv_backgroundBarColor="@color/ash"
-                app:pcv_gradientColors="#4CAF50, #900c3e"
+                app:pcv_gradientColors="#4CAF50, #c70039"
                 app:pcv_gradientType="linear"
                 app:pcv_mode="ring"
                 app:pcv_orientation="clockwise"
@@ -201,10 +202,11 @@
                     app:layout_constraintStart_toStartOf="@+id/total_count"
                     app:layout_constraintTop_toBottomOf="@+id/total_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/bar_chart"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_chart">
@@ -216,14 +218,14 @@
                     android:layout_centerInParent="true"
                     android:gravity="center"
                     app:hdBarCanBeClick="true"
-                    app:hdBarHeight="120dp"
-                    app:hdBarRadius="10dp"
+                    app:hdBarHeight="@dimen/_110sdp"
+                    app:hdBarRadius="@dimen/_10sdp"
                     app:hdBarTitleColor="@color/bar_title_color"
                     app:hdBarTitleMarginTop="15dp"
                     app:hdBarTitleSelectedColor="@color/black"
                     app:hdBarTitleTxtSize="12sp"
-                    app:hdBarWidth="40dp"
-                    app:hdEmptyColor="@color/barChartUnfill"
+                    app:hdBarWidth="@dimen/_35sdp"
+                    app:hdEmptyColor="@color/ash"
                     app:hdMaxValue="100"
                     app:hdPinBackgroundColor="@color/pin_background"
                     app:hdPinDrawable="@drawable/ic_pin"
@@ -232,7 +234,7 @@
                     app:hdPinMarginTop="0dp"
                     app:hdPinPaddingBottom="5dp"
                     app:hdPinTextColor="@color/white"
-                    app:hdPinTxtSize="11sp"
+                    app:hdPinTxtSize="@dimen/_10ssp"
                     app:hdProgressClickColor="@color/progress"
                     app:hdProgressColor="@color/progress"
                     app:hdProgressDisableColor="@color/progress_disable"
@@ -249,6 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bar_chart">
