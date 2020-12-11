@@ -1,3 +1,4 @@
 include ':charts'
+include ':charts'
 include ':app'
 rootProject.name = "Routes"
