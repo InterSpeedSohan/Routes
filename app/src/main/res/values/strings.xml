@@ -16,4 +16,7 @@
     <string name="take_image">Take Image</string>
     <string name="take_image_done">Take Image(Done)</string>
     <string name="crash_toast_text">Crushed!</string>
+
+    <string name="version">1.0</string>
+    <string name="user_type">For Fresh campaign users only</string>
 </resources>

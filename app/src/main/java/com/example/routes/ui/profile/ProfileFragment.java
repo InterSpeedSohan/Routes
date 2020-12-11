@@ -113,7 +113,7 @@ public class ProfileFragment extends Fragment {
 
        // getStatus();
         //getList("Dec");
-        createChart();
+        //createChart();
 
 
         PercentageChartView todayChart = binding.todayChart;
