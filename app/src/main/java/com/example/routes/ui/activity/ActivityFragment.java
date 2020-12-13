@@ -68,7 +68,7 @@ public class ActivityFragment extends Fragment {
     public LocationManager locationManager;
     public GPSLocationListener listener;
     public Location previousBestLocation = null;
-    private static final int TWO_MINUTES = 1000 * 60 * 1;
+    private static final int TWO_MINUTES = 1000 * 60;
     public static final String BROADCAST_ACTION = "gps_data";
     String code = "", message = "";
     Intent intent;
@@ -81,11 +81,9 @@ public class ActivityFragment extends Fragment {
     ImageButton logoutBtn, imageBtn;
     Button submitBtn;
 
-    EditText edtName,edtNumber,edtHouseNumber, edtHouseName, edtRoadNumber, edtRoadName,
-            edtAddressLine1, edtAddressLine2;
+    EditText edtName,edtNumber,edtAddress;
 
-    String name = "", number = "",houseNumber = "", houseName = "", roadNumber = "", roadName = "",
-            addressLine1 = "", addressLine2 = "";
+    String name = "", number = "", address = "";
 
     String area = "", userId = "";
 
@@ -105,28 +103,9 @@ public class ActivityFragment extends Fragment {
 
     SweetAlertDialog sweetAlertDialog;
 
-    String[] divisionList = new String[] {"Division","Barisal", "Chittagong", "Dhaka", "Khulna", "Rajshahi", "Rangpur", "Sylhet"};
-
-    String[] barisalDistricList = new String[] {"Barguna", "Barisal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur"};
-    String[] chittagongDistricList = new String[] {"Bandarban", "Brahmanbaria", "Chandpur", "Chittagong", "Comilla", "Cox's Bazar",
-            "Feni", "Khagrachhari", "Lakshmipur", "Noakhali", "Rangamati"};
-    String[] dhakaDistricList = new String[] { "Dhaka", "Faridpur", "Gazipur", "Gopalganj", "Jamalpur", "Kishoregonj", "Madaripur",
-            "Manikganj", "Munshiganj", "Mymensingh", "Narayanganj", "Narsingdi", "Netrakona", "Rajbari", "Shariatpur", "Sherpur", "Tangail"};
-    String[] khulnaDistricList = new String[] {"Bagerhat", "Chuadanga", "Jessore", "Jhenaidah", "Khulna",
-            "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira"};
-    String[] rajshahiDistricList = new String[] {"Bogra", "Joypurhat", "Naogaon", "Natore", "Chapai Nababganj", "Pabna", "Rajshahi", "Sirajganj"};
-    String[] rangpurDistricList = new String[] {"Dinajpur", "Gaibandha", "Kurigram",
-            "Lalmonirhat", "Nilphamari", "Zila", "Panchagarh", "Rangpur", "Thakurgaon"};
-    String[] sylthetDistricList = new String[] {"Habiganj", "Maulvibazar", "Sunamganj", "Sylhet"};
-
-
-    Spinner divisionSpinner, districtSpinner, thanaSpinner;
-    String  thana = "", thanaId = "";
-    ArrayAdapter<String> divisionAdapter,districtAdapter, thanaAdapter;
     User user;
-
-    Map<Integer, String> thanaMap;
-
+    List<String> priorBrandList = new ArrayList<>();
+    ArrayAdapter<String> priorBrandAdapter;
     FragmentActivityBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -155,92 +134,9 @@ public class ActivityFragment extends Fragment {
 
         edtName = binding.edtName;
         edtNumber = binding.edtContactNumber;
-        edtHouseNumber = binding.edtHouseNumber;
-        edtHouseName = binding.edtHouseName;
-        edtRoadNumber = binding.edtRoadNumber;
-        edtRoadName = binding.edtRoadName;
-        edtAddressLine1 = binding.edtAddressLine1;
-        edtAddressLine2 = binding.edtAddressLine2;
+        edtAddress = binding.edtAddress;
 
-        divisionSpinner = binding.areaSpinnerDivision;
-        districtSpinner = binding.areaSpinnerDistrict;
-        thanaSpinner = binding.areaSpinnerThana;
-
-        divisionAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, divisionList);
-
-        binding.areaSpinnerDivision.setAdapter(divisionAdapter);
-
-        binding.areaSpinnerDivision.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String name = binding.areaSpinnerDivision.getSelectedItem().toString();
-                if(name.equals("Division"))
-                {
-                    // do nothing
-                }
-                else if(name.equals("Barisal"))
-                {
-                    setDistrictSpinner(barisalDistricList);
-                }
-                else if(name.endsWith("Chittagong"))
-                {
-                    setDistrictSpinner(chittagongDistricList);
-                }
-                else if(name.equals("Dhaka"))
-                {
-                    setDistrictSpinner(dhakaDistricList);
-                }
-                else if(name.endsWith("Khulna"))
-                {
-                    setDistrictSpinner(khulnaDistricList);
-                }
-                else if(name.equals("Rajshahi"))
-                {
-                    setDistrictSpinner(rajshahiDistricList);
-                }
-                else if(name.endsWith("Rangpur"))
-                {
-                    setDistrictSpinner(rangpurDistricList);
-                }
-                else if(name.equals("Sylhet"))
-                {
-                    setDistrictSpinner(sylthetDistricList);
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-        binding.areaSpinnerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String name = binding.areaSpinnerDistrict.getSelectedItem().toString();
-                getThanaList(name);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        thanaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                thana = thanaSpinner.getSelectedItem().toString();
-                thanaId = thanaMap.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+        getBrandList();
 
         imageBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -276,12 +172,7 @@ public class ActivityFragment extends Fragment {
                 network = CustomUtility.haveNetworkConnection(requireContext());
                 name = edtName.getText().toString();
                 number = edtNumber.getText().toString();
-                houseName = edtHouseName.getText().toString();
-                houseNumber = edtHouseNumber.getText().toString();
-                roadName = edtRoadName.getText().toString();
-                roadNumber = edtRoadNumber.getText().toString();
-                addressLine1 = edtAddressLine1.getText().toString();
-                addressLine2 = edtAddressLine2.getText().toString();
+                address = edtAddress.getText().toString();
 
                 boolean flag = chekFeilds();
                 if(flag)
@@ -312,6 +203,15 @@ public class ActivityFragment extends Fragment {
         GPS_Start();
     }
 
+    private void getBrandList() {
+        priorBrandList.add("Dano");
+        priorBrandList.add("Fresh");
+        priorBrandList.add("Nestle");
+        priorBrandList.add("Others");
+        priorBrandAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, priorBrandList);
+        binding.priorBrandSpinner.setAdapter(priorBrandAdapter);
+    }
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -332,17 +232,7 @@ public class ActivityFragment extends Fragment {
     }
 
 
-    private void setDistrictSpinner(String[] districtList)
-    {
-        districtAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, districtList);
-        districtSpinner.setAdapter(districtAdapter);
-    }
 
-    private void setThanaList(List<String> thanaList)
-    {
-        thanaAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, thanaList);
-        thanaSpinner.setAdapter(thanaAdapter);
-    }
 
     //after finishing camera intent whether the picture was save or not
     @Override
@@ -476,13 +366,6 @@ public class ActivityFragment extends Fragment {
                 params.put("UserId",user.getUserId());
                 params.put("Name",name);
                 params.put("Mobile",number);
-                params.put("HouseNumber", houseNumber);
-                params.put("HouseName",houseName);
-                params.put("RoadName",roadName);
-                params.put("RoadNumber",roadNumber);
-                params.put("AddressLine01",addressLine1);
-                params.put("AddressLine02",addressLine2);
-                params.put("ThanaId",thanaId);
                 params.put("Latitude",presentLat);
                 params.put("Longitude",presentLon);
                 params.put("Accuracy",presentAcc);
@@ -495,70 +378,6 @@ public class ActivityFragment extends Fragment {
     }
 
 
-
-    public void getThanaList(final String disName)
-    {
-        pDialog = new SweetAlertDialog(requireContext(),SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.show();
-        String upLoadServerUri="https://atmdbd.com/api/CommThana/get_thana_by_district_name.php";
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, upLoadServerUri,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            pDialog.dismiss();
-                            Log.e("Server Response",response);
-                            JSONObject j;
-                            JSONObject jo = new JSONObject(response);
-                            String code = jo.getString("success");
-                            String message = jo.getString("message");
-
-                            if(code.equals("true"))
-                            {
-                                JSONArray ja = jo.getJSONArray("resultThanaList");
-                                //Log.e("ThanaList", String.valueOf(ja));
-                                List<String> thList = new ArrayList<String>();
-                                thanaMap = new HashMap<Integer, String>();
-                                for(int i = 0; i<ja.length(); i++)
-                                {
-                                    j = ja.getJSONObject(i);
-                                    //Log.e("thana", String.valueOf(j));
-                                    thanaMap.put(i,j.getString("ThanaId"));
-                                    thList.add(j.getString("ThanaName"));
-                                }
-
-                                //Log.e("lst", String.valueOf(thList));
-                                setThanaList(thList);
-
-                            }else {
-                                CustomUtility.showAlert(requireContext(),"No thana list found by district id",message);
-                            }
-
-                        } catch (JSONException e) {
-                            CustomUtility.showAlert(requireContext(),e.getMessage(),"Getting Response");
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                pDialog.dismiss();
-                CustomUtility.showAlert(requireContext(),message,"Getting Thana List Failed");
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<>();
-                params.put("DistrictName",disName);
-                return params;
-            }
-        };
-
-        MySingleton.getInstance(requireContext()).addToRequestQue(stringRequest);
-    }
 
     private void GPS_Start() {
         try {

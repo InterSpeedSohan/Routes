@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:scrollbars="none"
@@ -78,7 +78,8 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:gravity="center"
-                        android:hint="Akash Shahriar"
+                        android:hint="XYZ"
+                        android:textColorHint="@color/ash"
                         android:textColor="@color/orange"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -132,6 +133,7 @@
                         android:gravity="center"
                         android:hint="01xxxxxxx"
                         android:inputType="phone"
+                        android:textColorHint="@color/ash"
                         android:maxLength="11"
                         android:textColor="@color/orange"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -144,7 +146,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/houseLayout"
+                android:id="@+id/address_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -157,7 +159,6 @@
                     android:layout_width="120dp"
                     android:layout_height="30dp"
                     android:background="@color/orange"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
                     app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -167,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
-                        android:text="House Number"
+                        android:text="Addresss"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -190,12 +191,13 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/edtHouseNumber"
+                        android:id="@+id/edt_address"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:gravity="center"
-                        android:hint="1/A "
+                        android:hint="1x Road, Dhaka"
+                        android:textColorHint="@color/ash"
                         android:textColor="@color/orange"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -204,401 +206,112 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout4"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/orange"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="House Name"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout5"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edit_text_orange"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
-
-                    <EditText
-                        android:id="@+id/edtHouseName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint="Akash House"
-                        android:textColor="@color/orange"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/roadLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/houseLayout">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout6"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:background="@color/red"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout7"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Road Number"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout7"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:background="@drawable/edit_text_red"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout9"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout6"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <EditText
-                        android:id="@+id/edtRoadNumber"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint="73 "
-                        android:textColor="@color/red"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout8"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/red"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout9"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Road Name"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout9"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edit_text_red"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout8"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
-
-                    <EditText
-                        android:id="@+id/edtRoadName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint="Ali Road"
-                        android:textColor="@color/red"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/addressLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/sale_done_layout"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/black_red"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/roadLayout">
+                app:layout_constraintTop_toBottomOf="@+id/address_layout">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout10"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:background="@color/black_red"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout12"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout11"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Address Line 1"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout11"
+                <TextView
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:background="@drawable/edit_text_black_red"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout13"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout10"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <EditText
-                        android:id="@+id/edtAddressLine1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint=""
-                        android:textColor="@color/black_red"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout12"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/black_red"
+                    android:text="Sale Done"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout13"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Address Line 2"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout13"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edit_text_black_red"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout12"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
-
-                    <EditText
-                        android:id="@+id/edtAddressLine2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint=""
-                        android:textColor="@color/black_red"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/sale_done_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sale_done_layout"
+                app:layout_constraintTop_toTopOf="@+id/sale_done_layout">
+
+                <RadioButton
+                    android:id="@+id/sale_done_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="24dp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/sale_done_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="40dp"
+                    android:text="No" />
+            </RadioGroup>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/areaLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/prior_brand_layout"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="16dp"
-                android:visibility="gone"
+                android:background="@color/black_red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Prior Brand"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Spinner
+                android:id="@+id/prior_brand_spinner"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="@color/light_orange"
+                app:layout_constraintBottom_toBottomOf="@+id/prior_brand_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/prior_brand_layout" />
+
+
+            <EditText
+                android:id="@+id/remark"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_black_red"
+                android:gravity="center"
+                android:hint="Remark"
+                android:textColorHint="@color/ash"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addressLayout">
+                app:layout_constraintTop_toBottomOf="@+id/prior_brand_spinner" />
 
-                <RelativeLayout
-                    android:id="@+id/spinnerLayoutDivision"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight=".28"
-                    android:background="@drawable/spinner_lay"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toStartOf="@+id/spinnerLayoutDistrict"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <Spinner
-                        android:id="@+id/areaSpinnerDivision"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:spinnerMode="dropdown" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="35dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/down" />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:id="@+id/spinnerLayoutDistrict"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight=".28"
-                    android:background="@drawable/spinner_lay"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toStartOf="@+id/spinnerLayoutThana"
-                    app:layout_constraintStart_toEndOf="@+id/spinnerLayoutDivision"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <Spinner
-                        android:id="@+id/areaSpinnerDistrict"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:spinnerMode="dropdown" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="35dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/down" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/spinnerLayoutThana"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight=".28"
-                    android:background="@drawable/spinner_lay"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/spinnerLayoutDistrict"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <Spinner
-                        android:id="@+id/areaSpinnerThana"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:spinnerMode="dropdown" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="35dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/down" />
-
-                </RelativeLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/imageLayout"
@@ -608,7 +321,7 @@
                 android:background="@color/yellow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/areaLayout">
+                app:layout_constraintTop_toBottomOf="@+id/remark">
 
                 <TextView
                     android:id="@+id/imageStatus"
@@ -638,15 +351,15 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/submitBtn"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:layout_marginTop="16dp"
-                android:textSize="@dimen/_12ssp"
                 android:background="@drawable/submit_btn"
                 android:foreground="?selectableItemBackground"
                 android:text="Submit"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageLayout" />
