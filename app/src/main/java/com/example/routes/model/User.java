@@ -1,8 +1,6 @@
-package com.example.routes.user;
+package com.example.routes.model;
 
 import android.content.SharedPreferences;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class User {
     String name, teamId, userId, area, teamName;

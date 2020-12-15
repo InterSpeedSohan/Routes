@@ -1,4 +1,4 @@
-package com.example.routes.ui.activity;
+ package com.example.routes.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -22,7 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +31,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -40,11 +38,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.routes.MainActivity;
 import com.example.routes.R;
 import com.example.routes.databinding.FragmentActivityBinding;
-import com.example.routes.user.User;
+import com.example.routes.model.User;
 import com.example.routes.utils.CustomUtility;
 import com.example.routes.utils.MySingleton;
+import com.ramijemli.percentagechartview.PercentageChartView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,27 +63,19 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ActivityFragment extends Fragment {
-    public static String presentLat = "", presentLon = "", presentAcc = "";
-    private static final int MY_PERMISSIONS_REQUEST = 0;
-    public LocationManager locationManager;
-    public GPSLocationListener listener;
-    public Location previousBestLocation = null;
-    private static final int TWO_MINUTES = 1000 * 60;
-    public static final String BROADCAST_ACTION = "gps_data";
-    String code = "", message = "";
-    Intent intent;
     static Bitmap bitmap;
     SweetAlertDialog pDialog;
     JSONObject jsonObject;
 
-    TextView txtName, txtTeam, txtTodayCount, txtTotalCount, imageStatus;
+    TextView imageStatus;
 
-    ImageButton logoutBtn, imageBtn;
+    ImageButton  imageBtn;
     Button submitBtn;
 
     EditText edtName,edtNumber,edtAddress;
 
     String name = "", number = "", address = "";
+    String isSold = "", priorBrandName = "", priorBrandId = "";
 
     String area = "", userId = "";
 
@@ -99,7 +91,7 @@ public class ActivityFragment extends Fragment {
     boolean network = false;
 
     String[] operatorList = {"017", "013", "019", "014", "016", "018", "015"};
-
+    Map<Integer, String> brandMap = new HashMap<>();
 
     SweetAlertDialog sweetAlertDialog;
 
@@ -137,6 +129,31 @@ public class ActivityFragment extends Fragment {
         edtAddress = binding.edtAddress;
 
         getBrandList();
+        binding.priorBrandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                priorBrandName = priorBrandList.get(position);
+                priorBrandId = brandMap.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == binding.saleDoneYes.getId())
+                {
+                    isSold = "True";
+                }
+                else if(checkedId == binding.saleDoneNo.getId())
+                {
+                    isSold = "False";
+                }
+            }
+        });
 
         imageBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -200,16 +217,57 @@ public class ActivityFragment extends Fragment {
 
         // for getting gps value
         //intent = new Intent(BROADCAST_ACTION);
-        GPS_Start();
     }
 
     private void getBrandList() {
-        priorBrandList.add("Dano");
-        priorBrandList.add("Fresh");
-        priorBrandList.add("Nestle");
-        priorBrandList.add("Others");
-        priorBrandAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, priorBrandList);
-        binding.priorBrandSpinner.setAdapter(priorBrandAdapter);
+        sweetAlertDialog = new SweetAlertDialog(requireContext(), 5);
+        sweetAlertDialog.setTitleText("Loading");
+        sweetAlertDialog.show();
+        MySingleton.getInstance(requireContext()).addToRequestQue(new StringRequest(1, "https://fresh.atmdbd.com/api/android/get_brand_list.php", new Response.Listener<String>() {
+            public void onResponse(String response) {
+                try {
+                    sweetAlertDialog.dismiss();
+                    Log.e("response", response);
+                    jsonObject = new JSONObject(response);
+                    String code = jsonObject.getString("success");
+                    if (code.equals("true")) {
+                        JSONArray jsonArray = jsonObject.getJSONArray("brandList");
+                        for (int i = 0; i<jsonArray.length();i++)
+                        {
+                            priorBrandList.add(jsonArray.getJSONObject(i).getString("name"));
+                            brandMap.put(i,jsonArray.getJSONObject(i).getString("id"));
+                        }
+                        priorBrandAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, priorBrandList);
+                        binding.priorBrandSpinner.setAdapter(priorBrandAdapter);
+                    }
+                    else
+                        CustomUtility.showError(requireContext(), "No data found", "Failed");
+                } catch (JSONException e) {
+                    CustomUtility.showError(requireContext(), e.getMessage(), "Getting Response");
+                }
+            }
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+                sweetAlertDialog.dismiss();
+                final SweetAlertDialog s = new SweetAlertDialog(requireContext(), SweetAlertDialog.ERROR_TYPE);
+                s.setConfirmText("Ok");
+                s.setTitleText("Network Error, try again!");
+                s.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        s.dismissWithAnimation();
+                        startActivity(requireActivity().getIntent());
+                        requireActivity().finish();
+                    }
+                });
+                s.show();
+            }
+        }) {
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("UserId", user.getUserId());
+                return params;
+            }
+        });
     }
 
     @Override
@@ -272,12 +330,13 @@ public class ActivityFragment extends Fragment {
             CustomUtility.showWarning(requireContext(), "Please insert correct contact number","Required fields");
             return false;
         }
-        else if(!photoFlag)
+        else if (isSold.equals(""))
         {
-            CustomUtility.showWarning(requireContext(),"Please take a selfie","Required fields");
+            CustomUtility.showWarning(requireContext(), "Please select Fresh was sold or not","Required fields");
             return false;
         }
-        else if(presentAcc.equals(""))
+
+        else if(MainActivity.presentAcc.equals(""))
         {
             CustomUtility.showWarning(requireContext(),"Please wait for the gps","Required fields");
             return false;
@@ -292,17 +351,20 @@ public class ActivityFragment extends Fragment {
 
         pDialog = new SweetAlertDialog(requireContext(),SweetAlertDialog.PROGRESS_TYPE);
         pDialog.show();
-        Uri uri = Uri.fromFile(new File(currentPhotoPath));
-        try{
-            bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uri);
-        } catch (IOException e) {
-            pDialog.dismiss();
-            String err = e.getMessage() + " May be storage full please uninstall then install the app again";
-            CustomUtility.showAlert(requireContext(), e.getMessage(), "Problem Creating Bitmap at Submit");
-            return;
+        if(!currentPhotoPath.equals(""))
+        {
+            Uri uri = Uri.fromFile(new File(currentPhotoPath));
+            try{
+                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uri);
+            } catch (IOException e) {
+                pDialog.dismiss();
+                String err = e.getMessage() + " May be storage full please uninstall then install the app again";
+                CustomUtility.showAlert(requireContext(), e.getMessage(), "Problem Creating Bitmap at Submit");
+                return;
+            }
+            imageString = CustomUtility.imageToString(bitmap);
         }
-        imageString = CustomUtility.imageToString(bitmap);
-        String upLoadServerUri = "https://routes.atmdbd.com/api/consumer/insert_consumer.php";
+        String upLoadServerUri = "https://fresh.atmdbd.com/api/contact/insert_contact.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, upLoadServerUri,
                 new Response.Listener<String>() {
                     @Override
@@ -366,9 +428,14 @@ public class ActivityFragment extends Fragment {
                 params.put("UserId",user.getUserId());
                 params.put("Name",name);
                 params.put("Mobile",number);
-                params.put("Latitude",presentLat);
-                params.put("Longitude",presentLon);
-                params.put("Accuracy",presentAcc);
+                params.put("Address",address);
+                params.put("IsSold",isSold);
+                params.put("Remark",binding.remark.getText().toString());
+                params.put("PriorBrandName",priorBrandName);
+                params.put("PriorBrandId", priorBrandId);
+                params.put("Latitude", MainActivity.presentLat);
+                params.put("Longitude",MainActivity.presentLon);
+                params.put("Accuracy",MainActivity.presentAcc);
                 params.put("PictureData",imageString);
                 return params;
             }
@@ -378,102 +445,4 @@ public class ActivityFragment extends Fragment {
     }
 
 
-
-    private void GPS_Start() {
-        try {
-            locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
-            listener = new GPSLocationListener();
-            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 4000, 0, listener);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000, 0, listener);
-        } catch (Exception ex) {
-
-        }
-    }
-
-    protected boolean isBetterLocation(Location location, Location currentBestLocation) {
-        if (currentBestLocation == null) {
-            // A new location is always better than no location
-            return true;
-        }
-
-        // Check whether the new location fix is newer or older
-        long timeDelta = location.getTime() - currentBestLocation.getTime();
-        boolean isSignificantlyNewer = timeDelta > TWO_MINUTES;
-        boolean isSignificantlyOlder = timeDelta < -TWO_MINUTES;
-        boolean isNewer = timeDelta > 0;
-
-        // If it's been more than two minutes since the current location, use the new location
-        // because the user has likely moved
-        if (isSignificantlyNewer) {
-            return true;
-            // If the new location is more than two minutes older, it must be worse
-        } else if (isSignificantlyOlder) {
-            return false;
-        }
-
-        // Check whether the new location fix is more or less accurate
-        int accuracyDelta = (int) (location.getAccuracy() - currentBestLocation.getAccuracy());
-        boolean isLessAccurate = accuracyDelta > 0;
-        boolean isMoreAccurate = accuracyDelta < 0;
-        boolean isSignificantlyLessAccurate = accuracyDelta > 200;
-
-        // Check if the old and new location are from the same provider
-        boolean isFromSameProvider = isSameProvider(location.getProvider(),
-                currentBestLocation.getProvider());
-
-        // Determine location quality using a combination of timeliness and accuracy
-        if (isMoreAccurate) {
-            return true;
-        } else if (isNewer && !isLessAccurate) {
-            return true;
-        } else if (isNewer && !isSignificantlyLessAccurate && isFromSameProvider) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isSameProvider(String provider1, String provider2) {
-        if (provider1 == null) {
-            return provider2 == null;
-        }
-        return provider1.equals(provider2);
-    }
-
-    public class GPSLocationListener implements LocationListener {
-        public void onLocationChanged(final Location loc) {
-            Log.i("**********", "Location changed");
-            if (isBetterLocation(loc, previousBestLocation)) {
-
-
-                loc.getAccuracy();
-                //location.setText(" " + loc.getAccuracy());
-
-                presentLat = String.valueOf(loc.getLatitude());
-                presentLon = String.valueOf(loc.getLongitude());
-                presentAcc = String.valueOf(loc.getAccuracy());
-
-
-//                Toast.makeText(context, "Latitude" + loc.getLatitude() + "\nLongitude" + loc.getLongitude(), Toast.LENGTH_SHORT).show();
-//                intent.putExtra("Latitude", loc.getLatitude());
-               // intent.putExtra("Longitude", loc.getLongitude());
-               // intent.putExtra("Provider", loc.getProvider());
-                //requireActivity().sendBroadcast(intent);
-            }
-        }
-
-        public void onProviderDisabled(String provider) {
-            Toast.makeText(requireActivity().getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT).show();
-        }
-
-        public void onProviderEnabled(String provider) {
-            Toast.makeText(requireActivity().getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
-        }
-
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-            //Toast.makeText(getApplicationContext(), "Status Changed", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

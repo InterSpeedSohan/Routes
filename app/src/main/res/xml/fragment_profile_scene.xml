@@ -40,6 +40,7 @@
             motion:layout_constraintEnd_toEndOf="@+id/profileLayout"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp" />
+
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -51,14 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/txtTeam"
-            android:id="@+id/txtTodayCount"
+            android:id="@+id/txtMarket"
             motion:layout_constraintStart_toStartOf="@+id/txtTeam" />
-        <Constraint
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            motion:layout_constraintTop_toBottomOf="@+id/txtTodayCount"
-            android:id="@+id/txtTotalCount"
-            motion:layout_constraintStart_toStartOf="@+id/txtTodayCount" />
+
         <Constraint
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
@@ -115,19 +111,15 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toEndOf="@+id/profile_image"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            motion:layout_constraintHorizontal_bias="0.35" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/txtTeam"
-            android:id="@+id/txtTodayCount"
+            android:id="@+id/txtMarket"
             motion:layout_constraintStart_toStartOf="@+id/txtTeam" />
-        <Constraint
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            motion:layout_constraintTop_toBottomOf="@+id/txtTodayCount"
-            motion:layout_constraintStart_toStartOf="@+id/txtTodayCount"
-            android:id="@+id/txtTotalCount" />
+
         <Constraint
             android:layout_height="0dp"
             motion:layout_constraintStart_toStartOf="parent"

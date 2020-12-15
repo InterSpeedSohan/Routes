@@ -1,7 +1,6 @@
 package com.example.routes.ui.profile;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.routes.R;
 import com.example.routes.databinding.FragmentProfileBinding;
 import com.example.routes.login.LoginActivity;
-import com.example.routes.user.User;
+import com.example.routes.model.User;
 import com.example.routes.utils.CustomUtility;
 import com.example.routes.utils.MySingleton;
 import com.hadiidbouk.charts.BarData;
@@ -41,7 +40,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -97,7 +95,7 @@ public class ProfileFragment extends Fragment {
         }
         binding.textName.setText(user.getName());
         binding.txtTeam.setText("Team: "+user.getTeamName());
-
+        binding.txtMarket.setText("Market: "+user.getArea());
 
         recyclerView = view.findViewById(R.id.recycler_view);
         mAdapter = new DataAdapter(dataList);
@@ -111,18 +109,11 @@ public class ProfileFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-       // getStatus();
+        getStatus();
         //getList("Dec");
         //createChart();
 
 
-        PercentageChartView todayChart = binding.todayChart;
-        todayChart.setProgress((float) (40/50.0)*100,true);
-        todayChart.apply();
-
-        PercentageChartView totalChart = binding.totalChart;
-        totalChart.setProgress((float) (400/1000.0)*100, true);
-        totalChart.apply();
     }
 
     // data adapter class for showing the list
@@ -174,7 +165,7 @@ public class ProfileFragment extends Fragment {
         sweetAlertDialog = new SweetAlertDialog(requireContext(), 5);
         sweetAlertDialog.setTitleText("Loading");
         sweetAlertDialog.show();
-        MySingleton.getInstance(requireContext()).addToRequestQue(new StringRequest(1, "https://routes.atmdbd.com/api/consumer/user_status.php", new Response.Listener<String>() {
+        MySingleton.getInstance(requireContext()).addToRequestQue(new StringRequest(1, "https://fresh.atmdbd.com/api/contact/user_status.php", new Response.Listener<String>() {
             public void onResponse(String response) {
                 try {
                     sweetAlertDialog.dismiss();
@@ -182,11 +173,31 @@ public class ProfileFragment extends Fragment {
                     jsonObject = new JSONObject(response);
                     String code = jsonObject.getString("success");
                     if (code.equals("true")) {
-                        binding.txtTodayCount.setText("Today Count: "+jsonObject.getString("todayCount"));
-                        binding.txtTotalCount.setText("Total Count: "+jsonObject.getString("totalCount"));
-                        return;
+                        float today = 0, total = 0, dailyTarget = 0, totalTarget = 0;
+                        today = Float.parseFloat(jsonObject.getString("todayCount"));
+                        total = Float.parseFloat(jsonObject.getString("totalCount"));
+                        binding.todayCount.setText("Today Count: "+jsonObject.getString("todayCount"));
+                        binding.totalCount.setText("Total Count: "+jsonObject.getString("totalCount"));
+                        dailyTarget = Float.parseFloat(jsonObject.getString("dailyTarget"));
+                        totalTarget = Float.parseFloat(jsonObject.getString("totalTarget"));
+                        binding.todayTarget.setText("Today Target: "+ jsonObject.getString("dailyTarget"));
+                        binding.totalTarget.setText("Total Target: "+jsonObject.getString("totalTarget"));
+                        PercentageChartView todayChart = binding.todayChart;
+                        if(today<=dailyTarget)
+                            todayChart.setProgress((float) ((today/dailyTarget) *100.0),true);
+                        else
+                            todayChart.setProgress((float) (100.0),true);
+                        todayChart.apply();
+
+                        PercentageChartView totalChart = binding.totalChart;
+                        if(total<=totalTarget)
+                            totalChart.setProgress((float) ((total/totalTarget) *100.0),true);
+                        else
+                            totalChart.setProgress((float) (100.0),true);
+                        totalChart.apply();
                     }
-                    CustomUtility.showError(requireContext(), "No data found", "Failed");
+                    else
+                        CustomUtility.showError(requireContext(), "No data found", "Failed");
                 } catch (JSONException e) {
                     CustomUtility.showError(requireContext(), e.getMessage(), "Getting Response");
                 }

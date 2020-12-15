@@ -25,7 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.routes.MainActivity;
 import com.example.routes.R;
-import com.example.routes.user.User;
+import com.example.routes.model.User;
 import com.example.routes.utils.CustomUtility;
 import com.example.routes.utils.MySingleton;
 
@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
     public void login(final String user_name, final String user_pass)
     {
         Log.e("uname+upass",user_name + " "+user_pass);
-        String upLoadServerUri = "https://routes.atmdbd.com/api/login/login.php";
+        String upLoadServerUri = "https://fresh.atmdbd.com/api/login/login.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, upLoadServerUri,
                 new Response.Listener<String>() {
                     @Override
@@ -175,10 +175,10 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.apply();
 
                                  */
-                                user.setName(editor,"name", jsonObject.getString("user_full_name"));
-                                user.setUserId(editor, "id", jsonObject.getString("id"));
-                                user.setTeamId(editor, "id", jsonObject.getString("id"));
-                                user.setArea(editor,"area",jsonObject.getString("area_name"));
+                                user.setName(editor,"name", jsonObject.getString("full_name"));
+                                user.setUserId(editor, "id", jsonObject.getString("user_id"));
+                                user.setTeamId(editor, "id", jsonObject.getString("user_id"));
+                                user.setArea(editor,"area",jsonObject.getString("market_name"));
                                 user.setTeamName(editor,"team",jsonObject.getString("team_name"));
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
@@ -204,8 +204,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("LoginName",user_name);
-                params.put("LoginPass",user_pass);
+                params.put("user_name",user_name);
+                params.put("user_password",user_pass);
                 return params;
             }
         };

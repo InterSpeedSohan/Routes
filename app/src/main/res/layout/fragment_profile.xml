@@ -51,25 +51,15 @@
 
 
     <TextView
-        android:id="@+id/txtTodayCount"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtMarket"
+        android:layout_width="@dimen/_160sdp"
         android:layout_height="wrap_content"
-        android:text="Today Count: "
+        android:text="Market/Area: "
         android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTeam" />
 
-
-    <TextView
-        android:id="@+id/txtTotalCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Count: "
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTodayCount" />
 
 
     <androidx.core.widget.NestedScrollView
@@ -129,7 +119,7 @@
                     android:id="@+id/today_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today count: 40"
+                    android:text="Today count: "
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -138,7 +128,7 @@
                     android:id="@+id/today_target"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today target: 50"
+                    android:text="Today target: "
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/today_count"
                     app:layout_constraintTop_toBottomOf="@+id/today_count" />
@@ -188,7 +178,7 @@
                     android:id="@+id/total_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total count: 400"
+                    android:text="Total count: "
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/textView5"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -197,7 +187,7 @@
                     android:id="@+id/total_target"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total target: 1000"
+                    android:text="Total target: "
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/total_count"
                     app:layout_constraintTop_toBottomOf="@+id/total_count" />

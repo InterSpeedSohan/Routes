@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Routes</string>
-    <string name="nav_header_subtitle">interspeed@gmail.com</string>
+    <string name="nav_header_subtitle">For Fresh Campaign User\'s Only</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -19,4 +19,5 @@
 
     <string name="version">1.0</string>
     <string name="user_type">For Fresh campaign users only</string>
+    <string name="maps_api_key">AIzaSyCJUrup2ifisnMCMcq3_bFSaatCrnASDL4</string>
 </resources>
