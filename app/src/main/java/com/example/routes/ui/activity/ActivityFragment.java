@@ -325,7 +325,12 @@ public class ActivityFragment extends Fragment {
             CustomUtility.showWarning(requireContext(),"Please turn on internet connection","No inerternet connection!");
             return false;
         }
-        else if (number.length()>0 & !isCorrectPhoneNumber(number))
+        else if (name.equals(""))
+        {
+            CustomUtility.showWarning(requireContext(), "Please enter consumer name","Required fields");
+            return false;
+        }
+        else if (!isCorrectPhoneNumber(number))
         {
             CustomUtility.showWarning(requireContext(), "Please insert correct contact number","Required fields");
             return false;
@@ -433,6 +438,8 @@ public class ActivityFragment extends Fragment {
                 params.put("Remark",binding.remark.getText().toString());
                 params.put("PriorBrandName",priorBrandName);
                 params.put("PriorBrandId", priorBrandId);
+                params.put("BrandSkew", binding.edtConsumptionSkew.getText().toString());
+                params.put("ConsumptionUnit",binding.edtConsumptionUnit.getText().toString());
                 params.put("Latitude", MainActivity.presentLat);
                 params.put("Longitude",MainActivity.presentLon);
                 params.put("Accuracy",MainActivity.presentAcc);

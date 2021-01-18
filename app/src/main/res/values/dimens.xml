@@ -7,4 +7,6 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="header_main_image_size">@dimen/_50sdp</dimen>
+    <dimen name="text_box_width">@dimen/_100sdp</dimen>
+    <dimen name="text_box_height">@dimen/_25sdp</dimen>
 </resources>

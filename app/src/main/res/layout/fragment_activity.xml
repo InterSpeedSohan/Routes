@@ -37,8 +37,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout20"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/text_box_width"
+                    android:layout_height="@dimen/text_box_height"
                     android:background="@color/light_orange"
                     app:layout_constraintBottom_toTopOf="@+id/constraintLayout40"
                     app:layout_constraintEnd_toStartOf="@+id/constraintLayout30"
@@ -90,8 +90,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout40"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/text_box_width"
+                    android:layout_height="@dimen/text_box_height"
                     android:layout_marginTop="8dp"
                     android:background="@color/light_orange"
                     app:layout_constraintEnd_toStartOf="@+id/constraintLayout50"
@@ -156,8 +156,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout2"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/text_box_width"
+                    android:layout_height="@dimen/text_box_height"
                     android:background="@color/orange"
                     app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                     app:layout_constraintStart_toStartOf="parent"
@@ -211,8 +211,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/sale_done_layout"
-                android:layout_width="120dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/text_box_width"
+                android:layout_height="@dimen/text_box_height"
                 android:layout_marginTop="16dp"
                 android:background="@color/black_red"
                 app:layout_constraintStart_toStartOf="parent"
@@ -264,8 +264,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/prior_brand_layout"
-                android:layout_width="120dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/text_box_width"
+                android:layout_height="@dimen/text_box_height"
                 android:layout_marginTop="16dp"
                 android:background="@color/black_red"
                 app:layout_constraintStart_toStartOf="parent"
@@ -289,13 +289,138 @@
             <Spinner
                 android:id="@+id/prior_brand_spinner"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:background="@color/light_orange"
                 app:layout_constraintBottom_toBottomOf="@+id/prior_brand_layout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/prior_brand_layout" />
+                app:layout_constraintStart_toEndOf="@+id/prior_brand_layout"
+                app:layout_constraintTop_toTopOf="@+id/prior_brand_layout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout49"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/prior_brand_layout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consumption_skew_layout"
+                    android:layout_width="@dimen/text_box_width"
+                    android:layout_height="@dimen/text_box_height"
+                    android:background="@color/black_red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="Brand Skew"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout80"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/edit_text_orange"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/consumption_skew_layout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/edt_consumption_skew"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:hint="250gm"
+                        android:textColor="@color/orange"
+                        android:textColorHint="@color/ash"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout49">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consumption_unit_layout"
+                    android:layout_width="@dimen/text_box_width"
+                    android:layout_height="@dimen/text_box_height"
+                    android:background="@color/black_red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="Consumption Unit"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout8"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/edit_text_orange"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/consumption_unit_layout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/edt_consumption_unit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:hint="3"
+                        android:inputType="number"
+                        android:textColor="@color/orange"
+                        android:textColorHint="@color/ash"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <EditText
@@ -306,11 +431,11 @@
                 android:background="@drawable/edit_text_black_red"
                 android:gravity="center"
                 android:hint="Remark"
-                android:textColorHint="@color/ash"
                 android:textColor="@color/black"
+                android:textColorHint="@color/ash"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prior_brand_spinner" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
