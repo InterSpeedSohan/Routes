@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
@@ -91,13 +92,15 @@ public class ActivityFragment extends Fragment {
     boolean network = false;
 
     String[] operatorList = {"017", "013", "019", "014", "016", "018", "015"};
+    String[] purposeList = {"Glass of Milk", "Desert", "Tea", "Others"};
     Map<Integer, String> brandMap = new HashMap<>();
 
     SweetAlertDialog sweetAlertDialog;
 
     User user;
     List<String> priorBrandList = new ArrayList<>();
-    ArrayAdapter<String> priorBrandAdapter;
+    ArrayAdapter<String> purposeListAdapter;
+    String diplomaPurpose = "", marksPurpose = "", freshPurpose = "", danoPurpose = "", danishPurpose = "", pranPurpose = "", nidoPurpose = "", othersPurpose = "";
     FragmentActivityBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -128,7 +131,7 @@ public class ActivityFragment extends Fragment {
         edtNumber = binding.edtContactNumber;
         edtAddress = binding.edtAddress;
 
-        getBrandList();
+       /* getBrandList();
         binding.priorBrandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -141,6 +144,124 @@ public class ActivityFragment extends Fragment {
 
             }
         });
+
+        */
+
+        purposeListAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, purposeList);
+        binding.diplomaSpinner.setAdapter(purposeListAdapter);
+        binding.marksSpinner.setAdapter(purposeListAdapter);
+        binding.freshSpinner.setAdapter(purposeListAdapter);
+        binding.danoSpinner.setAdapter(purposeListAdapter);
+        binding.danishSpinner.setAdapter(purposeListAdapter);
+        binding.pranSpinner.setAdapter(purposeListAdapter);
+        binding.nidoSpinner.setAdapter(purposeListAdapter);
+        binding.othersSpinner.setAdapter(purposeListAdapter);
+
+        binding.diplomaCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.diplomaCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.diplomaCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.marksCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.marksCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.marksCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.freshCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.freshCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.freshCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.danoCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.danoCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.danoCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.danishCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.danishCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.danishCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.pranCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.pranCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.pranCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.nidoCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.nidoCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.nidoCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+        binding.othersCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    binding.othersCardview.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.othersCardview.setVisibility(View.GONE);
+                }
+            }
+        });
+
         binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -218,7 +339,7 @@ public class ActivityFragment extends Fragment {
         // for getting gps value
         //intent = new Intent(BROADCAST_ACTION);
     }
-
+/*
     private void getBrandList() {
         sweetAlertDialog = new SweetAlertDialog(requireContext(), 5);
         sweetAlertDialog.setTitleText("Loading");
@@ -269,6 +390,8 @@ public class ActivityFragment extends Fragment {
             }
         });
     }
+
+ */
 
     @Override
     public void onDetach() {
@@ -438,8 +561,6 @@ public class ActivityFragment extends Fragment {
                 params.put("Remark",binding.remark.getText().toString());
                 params.put("PriorBrandName",priorBrandName);
                 params.put("PriorBrandId", priorBrandId);
-                params.put("BrandSkew", binding.edtConsumptionSkew.getText().toString());
-                params.put("ConsumptionUnit",binding.edtConsumptionUnit.getText().toString());
                 params.put("Latitude", MainActivity.presentLat);
                 params.put("Longitude",MainActivity.presentLon);
                 params.put("Accuracy",MainActivity.presentAcc);

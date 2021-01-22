@@ -6,10 +6,10 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
 
     <color name="chocolate">#624355</color>
-    <color name="yellow">#ffc300</color>
+    <color name="yellow">#AA9E30</color>
     <color name="red">#c70039</color>
     <color name="orange">#ff5733</color>
     <color name="ash">#7E7D7D</color>
@@ -18,4 +18,6 @@
 
     <color name="green">#4CAF50</color>
     <color name="blue">#3F51B5</color>
+    <color name="light_blue">#6678DA</color>
+
 </resources>

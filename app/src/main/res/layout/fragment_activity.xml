@@ -185,7 +185,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/edit_text_orange"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
                     app:layout_constraintTop_toTopOf="parent">
@@ -197,8 +197,8 @@
                         android:background="@android:color/transparent"
                         android:gravity="center"
                         android:hint="1x Road, Dhaka"
-                        android:textColorHint="@color/ash"
                         android:textColor="@color/orange"
+                        android:textColorHint="@color/ash"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -262,166 +262,1742 @@
                     android:text="No" />
             </RadioGroup>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
                 android:id="@+id/prior_brand_layout"
-                android:layout_width="@dimen/text_box_width"
-                android:layout_height="@dimen/text_box_height"
-                android:layout_marginTop="16dp"
-                android:background="@color/black_red"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:text="Prior Brand"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <Spinner
-                android:id="@+id/prior_brand_spinner"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:background="@color/light_orange"
-                app:layout_constraintBottom_toBottomOf="@+id/prior_brand_layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/prior_brand_layout"
-                app:layout_constraintTop_toTopOf="@+id/prior_brand_layout" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout49"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout9"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/black_red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Prior Brand"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <CheckBox
+                        android:id="@+id/fresh_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fresh"
+                        app:layout_constraintEnd_toStartOf="@+id/dano_checkbox"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/dano_checkbox" />
+
+                    <CheckBox
+                        android:id="@+id/diploma_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Diploma"
+                        app:layout_constraintStart_toStartOf="@+id/fresh_checkbox"
+                        app:layout_constraintTop_toBottomOf="@+id/fresh_checkbox" />
+
+                    <CheckBox
+                        android:id="@+id/marks_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Marks"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/diploma_checkbox"
+                        app:layout_constraintTop_toBottomOf="@+id/diploma_checkbox" />
+
+
+                    <CheckBox
+                        android:id="@+id/dano_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Dano"
+                        app:layout_constraintEnd_toStartOf="@+id/nido_checkbox"
+                        app:layout_constraintStart_toEndOf="@+id/fresh_checkbox"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
+
+                    <CheckBox
+                        android:id="@+id/danish_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Danish"
+                        app:layout_constraintStart_toStartOf="@+id/dano_checkbox"
+                        app:layout_constraintTop_toBottomOf="@+id/dano_checkbox" />
+
+                    <CheckBox
+                        android:id="@+id/pran_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Pran"
+                        app:layout_constraintStart_toStartOf="@+id/danish_checkbox"
+                        app:layout_constraintTop_toBottomOf="@+id/danish_checkbox" />
+
+                    <CheckBox
+                        android:id="@+id/nido_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nido"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/dano_checkbox"
+                        app:layout_constraintTop_toTopOf="@+id/dano_checkbox" />
+
+                    <CheckBox
+                        android:id="@+id/others_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Others"
+                        app:layout_constraintStart_toStartOf="@+id/nido_checkbox"
+                        app:layout_constraintTop_toBottomOf="@+id/nido_checkbox" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fresh_cardview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/prior_brand_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/consumption_skew_layout"
-                    android:layout_width="@dimen/text_box_width"
-                    android:layout_height="@dimen/text_box_height"
-                    android:background="@color/black_red"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/fresh_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Brand Skew"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fresh_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/light_blue"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Fresh"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout80"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:background="@drawable/edit_text_orange"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/consumption_skew_layout"
-                    app:layout_constraintTop_toTopOf="parent">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <EditText
-                        android:id="@+id/edt_consumption_skew"
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fresh_text_show_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint="250gm"
-                        android:textColor="@color/orange"
-                        android:textColorHint="@color/ash"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/fresh_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fresh_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/light_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fresh_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/fresh_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_fresh_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fresh_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fresh_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fresh_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/light_blue"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fresh_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/fresh_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/fresh_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fresh_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/light_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fresh_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/fresh_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/fresh_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/fresh_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/fresh_purpose_text_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/diploma_cardview"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout49">
+                app:layout_constraintTop_toBottomOf="@+id/fresh_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/consumption_unit_layout"
-                    android:layout_width="@dimen/text_box_width"
-                    android:layout_height="@dimen/text_box_height"
-                    android:background="@color/black_red"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/diploma_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Consumption Unit"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/diploma_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/yellow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Diploma"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/diploma_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/diploma_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diploma_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/yellow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dimploma_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/diploma_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_diploma_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/diploma_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/diploma_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diploma_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/yellow"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diploma_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/diploma_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/diploma_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diploma_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/yellow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/diploma_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/diploma_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/diploma_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/diploma_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/diploma_purpose_text_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/marks_cardview"
+                android:layout_marginTop="16dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diploma_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout8"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:background="@drawable/edit_text_orange"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/consumption_unit_layout"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/marks_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/edt_consumption_unit"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint="3"
-                        android:inputType="number"
-                        android:textColor="@color/orange"
-                        android:textColorHint="@color/ash"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/marks_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/green"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:layout_constraintTop_toTopOf="parent">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Marks"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/marks_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/marks_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/marks_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/marks_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/marks_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_marks_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/marks_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/marks_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/marks_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/green"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/marks_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/marks_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/marks_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/marks_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/marks_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/marks_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/marks_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/marks_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/marks_purpose_text_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dano_cardview"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marks_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/dano_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dano_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Dano"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dano_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dano_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dano_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/red"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dano_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/dano_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_dano_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dano_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dano_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dano_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/red"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dano_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/dano_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/dano_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/dano_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/red"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/dano_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/dano_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/dano_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/dano_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/dano_purpose_text_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/danish_cardview"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dano_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/danish_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/danish_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/light_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Danish"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/danish_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/danish_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/danish_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/light_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/danish_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/danish_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_danish_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/danish_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/danish_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/danish_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/light_blue"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/danish_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/danish_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/danish_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/danish_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/light_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/danish_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/danish_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/danish_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/danish_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/danish_purpose_text_layout" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pran_cardview"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/danish_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pran_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/pran_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/green"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Pran"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/pran_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/pran_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/pran_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/pran_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pran_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_pran_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/pran_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/pran_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/pran_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/green"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/pran_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pran_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/pran_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/pran_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/pran_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/pran_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/pran_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pran_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/pran_purpose_text_layout" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nido_cardview"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pran_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/nido_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/nido_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/yellow"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Nido"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/nido_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nido_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/nido_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/yellow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/nido_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nido_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_nido_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/nido_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nido_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/nido_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/yellow"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/nido_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nido_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/nido_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/nido_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/yellow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nido_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/nido_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/nido_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nido_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/nido_purpose_text_layout" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/others_cardview"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nido_cardview"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/others_layout"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/others_text"
+                        android:layout_width="@dimen/text_box_width"
+                        android:layout_height="@dimen/text_box_height"
+                        android:background="@color/black_red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="Others"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/others_text_show_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/others_text">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/others_consumption_sku_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/black_red"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Brand SKU"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/others_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/others_consumption_sku_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edt_others_consumption_sku"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="250gm"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/others_consumption_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/others_text_show_layout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/others_consumption_unit_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:background="@color/black_red"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Consumption Unit"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/others_consumtion_unit_edit_text_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/edit_text_orange"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/others_consumption_unit_text_layout"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/others_edt_consumption_unit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:hint="3"
+                                android:inputType="number"
+                                android:textColor="@color/orange"
+                                android:textColorHint="@color/ash"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/others_purpose_text_layout"
+                            android:layout_width="@dimen/text_box_width"
+                            android:layout_height="@dimen/text_box_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/black_red"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/others_consumption_unit_text_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Purpose"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/others_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/spinner_lay"
+                            app:layout_constraintBottom_toBottomOf="@+id/others_purpose_text_layout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/others_purpose_text_layout"
+                            app:layout_constraintTop_toTopOf="@+id/others_purpose_text_layout" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <EditText
                 android:id="@+id/remark"
@@ -435,7 +2011,7 @@
                 android:textColorHint="@color/ash"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+                app:layout_constraintTop_toBottomOf="@+id/others_cardview" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
