@@ -13,6 +13,8 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,14 +95,17 @@ public class ActivityFragment extends Fragment {
 
     String[] operatorList = {"017", "013", "019", "014", "016", "018", "015"};
     String[] purposeList = {"Glass of Milk", "Desert", "Tea", "Others"};
+    String[] sexList = {"Male", "Female", "Others"};
     Map<Integer, String> brandMap = new HashMap<>();
 
     SweetAlertDialog sweetAlertDialog;
 
     User user;
     List<String> priorBrandList = new ArrayList<>();
-    ArrayAdapter<String> purposeListAdapter;
+    ArrayAdapter<String> purposeListAdapter, sexListAdapter;
     String diplomaPurpose = "", marksPurpose = "", freshPurpose = "", danoPurpose = "", danishPurpose = "", pranPurpose = "", nidoPurpose = "", othersPurpose = "";
+    String sex = "";
+    boolean correctNumber = false;
     FragmentActivityBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -131,21 +136,31 @@ public class ActivityFragment extends Fragment {
         edtNumber = binding.edtContactNumber;
         edtAddress = binding.edtAddress;
 
-       /* getBrandList();
-        binding.priorBrandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.edtContactNumber.addTextChangedListener(new TextWatcher() {
+
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                priorBrandName = priorBrandList.get(position);
-                priorBrandId = brandMap.get(position);
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(!isCorrectPhoneNumber(s.toString()))
+                {
+                    binding.edtContactNumber.setError("Number must be correct and 11 digits");
+                    correctNumber = false;
+                }
+                else
+                {
+                    checkNumberValidation(s.toString());
+                }
             }
         });
 
-        */
 
         purposeListAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, purposeList);
         binding.diplomaSpinner.setAdapter(purposeListAdapter);
@@ -156,6 +171,119 @@ public class ActivityFragment extends Fragment {
         binding.pranSpinner.setAdapter(purposeListAdapter);
         binding.nidoSpinner.setAdapter(purposeListAdapter);
         binding.othersSpinner.setAdapter(purposeListAdapter);
+
+        sexListAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, sexList);
+        binding.sexSpinner.setAdapter(sexListAdapter);
+
+        binding.sexSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sex = binding.sexSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.diplomaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                diplomaPurpose = binding.diplomaSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.marksSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                marksPurpose = binding.marksSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.freshSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                freshPurpose = binding.freshSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.danoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                danoPurpose = binding.danoSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        binding.danishSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                danishPurpose = binding.danishSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.pranSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                pranPurpose = binding.pranSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        binding.nidoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                nidoPurpose = binding.nidoSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.othersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                othersPurpose = binding.othersSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         binding.diplomaCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -280,26 +408,10 @@ public class ActivityFragment extends Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                photoName = CustomUtility.getDeviceDate()+"image.jpeg";
+                String photoName = CustomUtility.getDeviceDate() + "image.jpeg";
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(requireActivity().getPackageManager()) != null) {
-                    // Create the File where the photo should go
-                    File photoFile = null;
-                    try {
-                        photoFile = createImageFile();
-                    } catch (IOException ex) {
-                        // Error occurred while creating the File
-                        CustomUtility.showAlert(requireContext(), ex.getMessage(), "Creating Image");
-                        return;
-                    }
-                    // Continue only if the File was successfully created
-                    if (photoFile != null) {
-                        photoURI = FileProvider.getUriForFile(requireActivity().getApplicationContext(),
-                                "com.example.routes.fileprovider",
-                                photoFile);
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                    }
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
             }
         });
@@ -339,59 +451,33 @@ public class ActivityFragment extends Fragment {
         // for getting gps value
         //intent = new Intent(BROADCAST_ACTION);
     }
-/*
-    private void getBrandList() {
-        sweetAlertDialog = new SweetAlertDialog(requireContext(), 5);
-        sweetAlertDialog.setTitleText("Loading");
-        sweetAlertDialog.show();
-        MySingleton.getInstance(requireContext()).addToRequestQue(new StringRequest(1, "https://fresh.atmdbd.com/api/android/get_brand_list.php", new Response.Listener<String>() {
-            public void onResponse(String response) {
-                try {
-                    sweetAlertDialog.dismiss();
-                    Log.e("response", response);
-                    jsonObject = new JSONObject(response);
-                    String code = jsonObject.getString("success");
-                    if (code.equals("true")) {
-                        JSONArray jsonArray = jsonObject.getJSONArray("brandList");
-                        for (int i = 0; i<jsonArray.length();i++)
-                        {
-                            priorBrandList.add(jsonArray.getJSONObject(i).getString("name"));
-                            brandMap.put(i,jsonArray.getJSONObject(i).getString("id"));
-                        }
-                        priorBrandAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, priorBrandList);
-                        binding.priorBrandSpinner.setAdapter(priorBrandAdapter);
-                    }
-                    else
-                        CustomUtility.showError(requireContext(), "No data found", "Failed");
-                } catch (JSONException e) {
-                    CustomUtility.showError(requireContext(), e.getMessage(), "Getting Response");
-                }
-            }
-        }, new Response.ErrorListener() {
-            public void onErrorResponse(VolleyError error) {
-                sweetAlertDialog.dismiss();
-                final SweetAlertDialog s = new SweetAlertDialog(requireContext(), SweetAlertDialog.ERROR_TYPE);
-                s.setConfirmText("Ok");
-                s.setTitleText("Network Error, try again!");
-                s.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        s.dismissWithAnimation();
-                        startActivity(requireActivity().getIntent());
-                        requireActivity().finish();
-                    }
-                });
-                s.show();
-            }
-        }) {
-            public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("UserId", user.getUserId());
-                return params;
-            }
-        });
+
+
+    private void checkNumberValidation(String number)
+    {
+        if(number.equals("01772784820"))
+        {
+            correctNumber = false;
+            binding.edtContactNumber.setError("Duplicate number detected");
+            //setCallGone();
+        }
+        else
+        {
+            correctNumber = true;
+            //setCallVisible();
+        }
     }
 
- */
+    private void setCallGone()
+    {
+        binding.textMobileNumber.setVisibility(View.GONE);
+        binding.callBtn.setVisibility(View.GONE);
+    }
+    private void setCallVisible()
+    {
+        binding.textMobileNumber.setVisibility(View.VISIBLE);
+        binding.callBtn.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public void onDetach() {
@@ -421,23 +507,11 @@ public class ActivityFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             photoFlag = true;
-            imageStatus.setText(R.string.take_image_done);
+            binding.imageStatus.setText(R.string.take_image_done);
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageString = CustomUtility.imageToString(imageBitmap);
         }
-    }
-
-    private File createImageFile() throws IOException {
-
-        File storageDir = requireActivity().getExternalFilesDir("Routes/Photos");
-
-        File image = new File(storageDir.getAbsolutePath() + File.separator + photoName);
-        try {
-            image.createNewFile();
-        } catch (IOException e) {
-            CustomUtility.showAlert(requireContext(), "Image Creation Failed. Please contact administrator", "Error");
-        }
-        currentPhotoPath = image.getAbsolutePath();
-        Log.e("image path",currentPhotoPath);
-        return image;
     }
 
 
@@ -506,14 +580,6 @@ public class ActivityFragment extends Fragment {
                             if(code.equals("true"))
                             {
                                 code = "Successful";
-                                File fdelete = new File(currentPhotoPath);
-                                if (fdelete.exists()) {
-                                    if (fdelete.delete()) {
-                                        System.out.println("file Deleted :" + currentPhotoPath);
-                                    } else {
-                                        System.out.println("file not Deleted :" + currentPhotoPath);
-                                    }
-                                }
                                 new SweetAlertDialog(requireContext(), SweetAlertDialog.SUCCESS_TYPE)
                                         .setTitleText("Successful")
                                         .setContentText("")
