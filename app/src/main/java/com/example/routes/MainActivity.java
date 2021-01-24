@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -26,6 +27,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     public static String presentLat = "", presentLon = "", presentAcc = "";
     private static final int MY_PERMISSIONS_REQUEST = 0;
@@ -34,14 +37,18 @@ public class MainActivity extends AppCompatActivity {
     public Location previousBestLocation = null;
     private static final int TWO_MINUTES = 1000 * 60;
     private AppBarConfiguration mAppBarConfiguration;
-
+    boolean doubleBackToExitPressedOnce = false;
     private int PERMISSION_ALL = 1;
+    NavController navController;
     private static final String[] PERMISSIONS_LIST = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.CAMERA,
+            Manifest.permission.PROCESS_OUTGOING_CALLS,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_CALL_LOG,
             Manifest.permission.INTERNET
     };
 
@@ -59,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_profile, R.id.nav_attendance, R.id.nav_activity, R.id.nav_logout)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         checkPermission();
@@ -186,6 +193,29 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(), "Status Changed", Toast.LENGTH_SHORT).show();
         }
     }
+    @Override
+    public void onBackPressed() {
+        if (Objects.requireNonNull(navController.getCurrentDestination()).getId() == R.id.nav_activity) {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
 
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to go profile", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
+        }
+        else {
+            super.onBackPressed();
+        }
+
+    }
 
 }

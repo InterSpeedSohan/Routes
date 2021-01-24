@@ -63,6 +63,7 @@
 
 
     <androidx.core.widget.NestedScrollView
+        android:visibility="visible"
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -76,6 +77,7 @@
             android:layout_height="match_parent">
 
             <com.ramijemli.percentagechartview.PercentageChartView
+                android:visibility="gone"
                 android:id="@+id/today_chart"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
@@ -99,10 +101,11 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/today_chart"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/today_chart"
-                app:layout_constraintTop_toTopOf="@+id/today_chart">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -130,12 +133,14 @@
                     android:layout_height="wrap_content"
                     android:text="Today target: "
                     android:textColor="@color/black"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@+id/today_count"
                     app:layout_constraintTop_toBottomOf="@+id/today_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <com.ramijemli.percentagechartview.PercentageChartView
+                android:visibility="gone"
                 android:id="@+id/total_chart"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
@@ -156,12 +161,12 @@
                 app:pcv_textColor="@color/black" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/total_chart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/total_chart"
-                app:layout_constraintTop_toTopOf="@+id/total_chart">
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
                 <TextView
                     android:id="@+id/textView5"
@@ -189,6 +194,7 @@
                     android:layout_height="wrap_content"
                     android:text="Total target: "
                     android:textColor="@color/black"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@+id/total_count"
                     app:layout_constraintTop_toBottomOf="@+id/total_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
