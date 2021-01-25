@@ -17,7 +17,7 @@
     <string name="take_image_done">Take Image(Done)</string>
     <string name="crash_toast_text">Crushed!</string>
 
-    <string name="version">1.0</string>
+    <string name="version">Version: 1.1</string>
     <string name="user_type">For Fresh campaign users only</string>
     <string name="maps_api_key">AIzaSyCJUrup2ifisnMCMcq3_bFSaatCrnASDL4</string>
 </resources>

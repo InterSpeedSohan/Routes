@@ -504,7 +504,7 @@ public class ActivityFragment extends Fragment {
         int i = 0;
         String phNumber, callType, callDate = null, timeString = null;
         Date callDayTime = null;
-        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd H:M:S");
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd H:mm:ss");
         int dircode, hours, minutes, seconds;
         while ( managedCursor.moveToNext() ) {
             phNumber = managedCursor.getString( number );
@@ -783,6 +783,8 @@ public class ActivityFragment extends Fragment {
                 params.put("Name",name);
                 params.put("Mobile",number);
                 params.put("Address",address);
+                params.put("Gender",sex);
+                params.put("Age",binding.edtAge.getText().toString());
                 params.put("IsSold",isSold);
 
                 if(isfresh){
