@@ -557,6 +557,7 @@ public class ActivityFragment extends Fragment {
     {
 
         pDialog = new SweetAlertDialog(requireContext(),SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.setCancelable(false);
         pDialog.show();
         String upLoadServerUri = "https://fresh.atmdbd.com/api/contact/get_mobile_count.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, upLoadServerUri,
@@ -712,6 +713,7 @@ public class ActivityFragment extends Fragment {
     {
 
         pDialog = new SweetAlertDialog(requireContext(),SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.setCancelable(false);
         pDialog.show();
         if(!currentPhotoPath.equals(""))
         {
@@ -838,7 +840,7 @@ public class ActivityFragment extends Fragment {
                     params.put("PriorBrand08Purpose",othersPurpose);
                 }
 
-
+                params.put("IsCalled","1");
                 params.put("CallStatus",callStatus);
                 params.put("CallTime", callTime);
                 params.put("CallDuration", callDuration);

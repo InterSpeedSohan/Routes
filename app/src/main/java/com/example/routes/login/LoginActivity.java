@@ -138,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                                 sweetAlertDialog = new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.PROGRESS_TYPE);
                                 sweetAlertDialog.setTitleText("Loading");
                                 sweetAlertDialog.show();
+                                sweetAlertDialog.setCancelable(false);
                                 login(id,pass);
                             }
                         }

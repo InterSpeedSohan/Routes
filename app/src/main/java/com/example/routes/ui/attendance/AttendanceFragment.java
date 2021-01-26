@@ -165,6 +165,7 @@ public class AttendanceFragment extends Fragment {
     private void upload()
     {
         pDialog = new SweetAlertDialog(requireContext(),SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.setCancelable(false);
         pDialog.show();
 
         String upLoadServerUri = "https://fresh.atmdbd.com/api/android/insert_attendance.php";

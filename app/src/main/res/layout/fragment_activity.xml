@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
-                        android:text="Name"
+                        android:text="Customer's Name"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -308,58 +308,7 @@
                 app:layout_constraintStart_toEndOf="@+id/sex_layout"
                 app:layout_constraintTop_toTopOf="@+id/sex_layout" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/sale_done_layout"
-                android:layout_width="@dimen/text_box_width"
-                android:layout_height="@dimen/text_box_height"
-                android:layout_marginTop="16dp"
-                android:background="@color/black_red"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sex_layout">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:text="Sale Done"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/sale_done_layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sale_done_layout"
-                app:layout_constraintTop_toTopOf="@+id/sale_done_layout">
-
-                <RadioButton
-                    android:id="@+id/sale_done_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="24dp"
-                    android:text="Yes" />
-
-                <RadioButton
-                    android:id="@+id/sale_done_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="40dp"
-                    android:text="No" />
-            </RadioGroup>
 
 
 
@@ -371,7 +320,7 @@
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+                app:layout_constraintTop_toBottomOf="@+id/sex_spinner">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -379,7 +328,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout9"
-                        android:layout_width="@dimen/text_box_width"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/text_box_height"
                         android:background="@color/black_red"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -391,7 +340,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginLeft="8dp"
-                            android:text="Prior Brand"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:text="Currently Using Brand"
                             android:textColor="@color/white"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -543,7 +494,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -570,7 +521,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -603,7 +555,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -630,7 +582,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -746,7 +698,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -773,7 +725,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -806,7 +759,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -833,7 +786,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -949,7 +902,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -976,7 +929,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1009,7 +963,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1036,7 +990,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1151,7 +1105,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1178,7 +1132,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1211,7 +1166,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1238,7 +1193,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1353,7 +1308,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1380,7 +1335,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1413,7 +1369,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1440,7 +1396,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1556,7 +1512,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1583,7 +1539,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1616,7 +1573,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1643,7 +1600,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1759,7 +1716,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1786,7 +1743,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1819,7 +1777,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1846,7 +1804,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1961,7 +1919,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Brand SKU"
+                                android:text="Brand SKU(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1988,7 +1946,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="250gm"
+                                android:hint="250"
+                                android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -2021,7 +1980,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Consumption Unit"
+                                android:text="Gross Unit(gm)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -2048,7 +2007,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="3"
+                                android:hint="500"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -2206,6 +2165,59 @@
             </androidx.cardview.widget.CardView>
 
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sale_done_layout"
+                android:layout_width="@dimen/text_box_width"
+                android:layout_height="@dimen/text_box_height"
+                android:layout_marginTop="16dp"
+                android:background="@color/black_red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/call_details_cardview">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Sale Done"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/sale_done_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sale_done_layout"
+                app:layout_constraintTop_toTopOf="@+id/sale_done_layout">
+
+                <RadioButton
+                    android:id="@+id/sale_done_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="24dp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/sale_done_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="40dp"
+                    android:text="No" />
+            </RadioGroup>
+
             <EditText
                 android:id="@+id/remark"
                 android:layout_width="0dp"
@@ -2218,7 +2230,7 @@
                 android:textColorHint="@color/ash"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/call_details_cardview" />
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

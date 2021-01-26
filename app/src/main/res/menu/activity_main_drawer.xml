@@ -16,6 +16,7 @@
             android:id="@+id/nav_activity"
             android:icon="@drawable/ic_work"
             android:title="@string/menu_activity" />
+ 
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_login"

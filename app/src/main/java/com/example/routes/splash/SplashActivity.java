@@ -24,25 +24,27 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.splash_activity);
-        iv = findViewById(R.id.iv);
+
+        //iv = findViewById(R.id.iv);
         /*Glide.with(this)
                 .load(R.drawable.logo)
                 .into(iv);
 
 
          */
-
+/*
         Animation animation = new AlphaAnimation(1, (float) 0.70); //to change visibility from visible to invisible
         animation.setDuration(2000); //1 second duration for each animation cycle
         animation.setInterpolator(new LinearInterpolator());
         iv.startAnimation(animation); //to start animation
+        */
 
 
         final Intent i = new Intent(this, LoginActivity.class);
         Thread timer = new Thread() {
             public void run() {
                 try {
-                    sleep(1000);
+                    sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
