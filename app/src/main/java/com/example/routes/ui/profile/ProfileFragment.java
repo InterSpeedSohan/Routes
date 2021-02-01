@@ -164,7 +164,9 @@ public class ProfileFragment extends Fragment {
     public void getStatus() {
         sweetAlertDialog = new SweetAlertDialog(requireContext(), 5);
         sweetAlertDialog.setTitleText("Loading");
+        sweetAlertDialog.setCancelable(false);
         sweetAlertDialog.show();
+
         MySingleton.getInstance(requireContext()).addToRequestQue(new StringRequest(1, "https://fresh.atmdbd.com/api/contact/user_status.php", new Response.Listener<String>() {
             public void onResponse(String response) {
                 try {

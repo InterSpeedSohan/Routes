@@ -97,7 +97,8 @@ public class ActivityFragment extends Fragment {
     boolean network = false;
 
     String[] operatorList = {"017", "013", "019", "014", "016", "018", "015"};
-    String[] purposeList = {"Glass of Milk", "Dessert", "Tea", "Others"};
+    String[] purposeList = {"GlassOfMilk", "Dessert", "Tea", "Others"};
+    String[] brandList = {"Fresh", "Diploma", "Marks", "Dano", "Danish", "Pran", "Nido", "Others"};
     String[] sexList = {"Male", "Female", "Others"};
 
 
@@ -107,6 +108,10 @@ public class ActivityFragment extends Fragment {
     String diplomaPurpose = "", marksPurpose = "", freshPurpose = "", danoPurpose = "", danishPurpose = "", pranPurpose = "", nidoPurpose = "", othersPurpose = "";
     String sex = "";
     boolean correctNumber = false, successCall = false, isfresh =false, isdiploma=false, ismarks=false, isdano=false, isdanish=false, ispran=false, isnido=false, isothers=false;
+
+
+    
+
     FragmentActivityBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -118,9 +123,13 @@ public class ActivityFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         if(savedInstanceState!=null)
         {
+
             correctNumber = savedInstanceState.getBoolean("correctNumber");
             successCall = savedInstanceState.getBoolean("successCall");
             photoFlag = savedInstanceState.getBoolean("photoFlag");
+            callStatus = savedInstanceState.getString("callStatus");
+            callTime = savedInstanceState.getString("callTime");
+            callDuration = savedInstanceState.getString("callDuration");
             if(photoFlag)
             {
                 imageString = savedInstanceState.getString("imageString");
@@ -130,6 +139,27 @@ public class ActivityFragment extends Fragment {
             setCallVisible();
         }
         super.onViewCreated(view, savedInstanceState);
+
+        Thread timer = new Thread() {
+            public void run() {
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    requireActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            binding.leafletImage.setVisibility(View.GONE);
+                            binding.scrollView.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+            }
+        };
+        timer.start();
+
         initialize();
     }
 
@@ -179,14 +209,7 @@ public class ActivityFragment extends Fragment {
 
 
         purposeListAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, purposeList);
-        binding.diplomaSpinner.setAdapter(purposeListAdapter);
-        binding.marksSpinner.setAdapter(purposeListAdapter);
-        binding.freshSpinner.setAdapter(purposeListAdapter);
-        binding.danoSpinner.setAdapter(purposeListAdapter);
-        binding.danishSpinner.setAdapter(purposeListAdapter);
-        binding.pranSpinner.setAdapter(purposeListAdapter);
-        binding.nidoSpinner.setAdapter(purposeListAdapter);
-        binding.othersSpinner.setAdapter(purposeListAdapter);
+
 
         sexListAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, sexList);
         binding.sexSpinner.setAdapter(sexListAdapter);
@@ -201,94 +224,7 @@ public class ActivityFragment extends Fragment {
 
             }
         });
-        binding.diplomaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                diplomaPurpose = binding.diplomaSpinner.getSelectedItem().toString();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.marksSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                marksPurpose = binding.marksSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.freshSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                freshPurpose = binding.freshSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.danoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                danoPurpose = binding.danoSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.danishSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                danishPurpose = binding.danishSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.pranSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                pranPurpose = binding.pranSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.nidoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                nidoPurpose = binding.nidoSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        binding.othersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                othersPurpose = binding.othersSpinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         binding.diplomaCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -676,7 +612,7 @@ public class ActivityFragment extends Fragment {
     {
         if (!network)
         {
-            CustomUtility.showWarning(requireContext(),"Please turn on internet connection","No inerternet connection!");
+            CustomUtility.showWarning(requireContext(),"Please turn on internet connection","No internet connection!");
             return false;
         }
         else if (name.equals(""))
@@ -789,57 +725,194 @@ public class ActivityFragment extends Fragment {
                 params.put("Age",binding.edtAge.getText().toString());
                 params.put("IsSold",isSold);
 
+
+                JSONObject js = new JSONObject();
+                JSONArray ja = new JSONArray();
+
+
                 if(isfresh){
                     params.put("PriorBrand01Name","Fresh");
                     params.put("PriorBrand01Skew", binding.edtFreshConsumptionSku.getText().toString());
                     params.put("PriorBrand01ConsumptionUnit",binding.freshEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand01Purpose",freshPurpose);
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","1");
+                        jo.put("BrandName","Fresh");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.freshMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.freshDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.freshTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.freshOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(isdiploma){
                     params.put("PriorBrand02Name","Diploma");
                     params.put("PriorBrand02Skew", binding.edtDiplomaConsumptionSku.getText().toString());
                     params.put("PriorBrand02ConsumptionUnit",binding.diplomaEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand02Purpose",diplomaPurpose);
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","2");
+                        jo.put("BrandName","Diploma");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.diplomaMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.diplomaDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.diplomaTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.diplomaOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(ismarks){
                     params.put("PriorBrand03Name","Marks");
                     params.put("PriorBrand03Skew", binding.edtMarksConsumptionSku.getText().toString());
                     params.put("PriorBrand03ConsumptionUnit",binding.marksEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand03Purpose",marksPurpose);
+
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","3");
+                        jo.put("BrandName","Marks");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.marksMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.marksDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.marksTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.marksOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(isdano){
                     params.put("PriorBrand04Name","Dano");
                     params.put("PriorBrand04Skew", binding.edtDanoConsumptionSku.getText().toString());
                     params.put("PriorBrand04ConsumptionUnit",binding.danoEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand04Purpose",danoPurpose);
+
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","4");
+                        jo.put("BrandName","Dano");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.danoMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.danoDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.danoTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.danoOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(isdanish){
                     params.put("PriorBrand05Name","Danish");
                     params.put("PriorBrand05Skew", binding.edtDanishConsumptionSku.getText().toString());
                     params.put("PriorBrand05ConsumptionUnit",binding.danishEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand05Purpose",danishPurpose);
+
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","5");
+                        jo.put("BrandName","Danish");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.danishMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.danishDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.danishTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.danishOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(ispran){
                     params.put("PriorBrand06Name","Pran");
                     params.put("PriorBrand06Skew", binding.edtPranConsumptionSku.getText().toString());
                     params.put("PriorBrand06ConsumptionUnit",binding.pranEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand06Purpose",pranPurpose);
+
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","6");
+                        jo.put("BrandName","Pran");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.pranMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.pranDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.pranTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.pranOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(isnido)
                 {
                     params.put("PriorBrand07Name","Nido");
                     params.put("PriorBrand07Skew", binding.edtNidoConsumptionSku.getText().toString());
                     params.put("PriorBrand07ConsumptionUnit",binding.nidoEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand07Purpose",nidoPurpose);
+
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","7");
+                        jo.put("BrandName","Nido");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.nidoMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.nidoDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.nidoTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.nidoOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(isothers)
                 {
                     params.put("PriorBrand08Name","Others");
                     params.put("PriorBrand08Skew", binding.edtOthersConsumptionSku.getText().toString());
                     params.put("PriorBrand08ConsumptionUnit",binding.othersEdtConsumptionUnit.getText().toString());
-                    params.put("PriorBrand08Purpose",othersPurpose);
-                }
 
+
+                    JSONObject jo = new JSONObject();
+                    try {
+                        jo.put("BrandId","8");
+                        jo.put("BrandName","Others");
+                        JSONObject item = new JSONObject();
+                        JSONArray itemArray = new JSONArray();
+                        item.put("GlassOfMilk", (binding.othersMilkCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Dessert", (binding.othersDessertCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Tea", (binding.othersTeaCheckbox.isChecked()) ? "1" : "0");
+                        item.put("Others", (binding.othersOthersCheckbox.isChecked()) ? "1" : "0");
+                        itemArray.put(item);
+                        jo.put("PurposeOfUseData",itemArray);
+                        ja.put(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
                 params.put("IsCalled","1");
                 params.put("CallStatus",callStatus);
                 params.put("CallTime", callTime);
@@ -850,6 +923,12 @@ public class ActivityFragment extends Fragment {
                 params.put("Accuracy",MainActivity.presentAcc);
                 params.put("PictureData",imageString);
                 params.put("Remark",binding.remark.getText().toString());
+                params.put("BrandData",ja.toString());
+
+
+                params.put("AppVersion", getString(R.string.version));
+
+                Log.d("json",ja.toString());
 
                 return params;
             }
@@ -865,6 +944,9 @@ public class ActivityFragment extends Fragment {
         outState.putBoolean("successCall",successCall);
         outState.putBoolean("photoFlag",photoFlag);
         outState.putString("imageString",imageString);
+        outState.putString("callStatus",callStatus);
+        outState.putString("callTime",callTime);
+        outState.putString("callDuration",callDuration);
         super.onSaveInstanceState(outState);
     }
 

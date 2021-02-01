@@ -8,7 +8,20 @@
     android:background="@color/white"
     >
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/leaflet_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/leaflet"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -17,6 +30,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:scrollbars="none"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +44,10 @@
                 android:id="@+id/contactLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profileLayout">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout20"
@@ -79,8 +93,8 @@
                         android:background="@android:color/transparent"
                         android:gravity="center"
                         android:hint="XYZ"
-                        android:textColorHint="@color/ash"
                         android:textColor="@color/orange"
+                        android:textColorHint="@color/ash"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -133,9 +147,9 @@
                         android:gravity="center"
                         android:hint="01xxxxxxx"
                         android:inputType="phone"
-                        android:textColorHint="@color/ash"
                         android:maxLength="11"
                         android:textColor="@color/orange"
+                        android:textColorHint="@color/ash"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -555,7 +569,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -582,7 +596,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -592,42 +606,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/fresh_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/light_blue"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fresh_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/fresh_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/fresh_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/fresh_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/fresh_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/fresh_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/fresh_consumtion_unit_edit_text_layout">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout90"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/fresh_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/fresh_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout90" />
+
+                                <CheckBox
+                                    android:id="@+id/fresh_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/fresh_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/fresh_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/fresh_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/fresh_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout90" />
+
+                                <CheckBox
+                                    android:id="@+id/fresh_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/fresh_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/fresh_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -759,7 +819,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -786,7 +846,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -796,42 +856,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/diploma_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/yellow"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/diploma_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/diploma_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/diploma_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/diploma_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/diploma_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/diploma_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/diploma_consumtion_unit_edit_text_layout">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout91"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/diploma_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/diploma_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout91" />
+
+                                <CheckBox
+                                    android:id="@+id/diploma_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/diploma_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/diploma_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/diploma_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/diploma_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout91" />
+
+                                <CheckBox
+                                    android:id="@+id/diploma_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/diploma_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/diploma_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -963,7 +1069,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -990,7 +1096,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1000,43 +1106,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/marks_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/green"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/marks_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/marks_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/marks_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/marks_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/marks_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/marks_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/marks_consumtion_unit_edit_text_layout">
 
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout92"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/marks_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/marks_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout92" />
+
+                                <CheckBox
+                                    android:id="@+id/marks_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/marks_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/marks_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/marks_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/marks_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout92" />
+
+                                <CheckBox
+                                    android:id="@+id/marks_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/marks_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/marks_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -1166,7 +1317,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1193,7 +1344,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1203,43 +1354,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/dano_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/red"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/dano_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/dano_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/dano_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/dano_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/dano_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/dano_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/dano_consumtion_unit_edit_text_layout">
 
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout93"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/dano_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/dano_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout93" />
+
+                                <CheckBox
+                                    android:id="@+id/dano_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/dano_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/dano_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/dano_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/dano_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout93" />
+
+                                <CheckBox
+                                    android:id="@+id/dano_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/dano_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/dano_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -1369,7 +1565,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1396,7 +1592,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1406,43 +1602,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/danish_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/light_blue"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/danish_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/danish_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/danish_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/danish_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/danish_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/danish_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/danish_consumtion_unit_edit_text_layout">
 
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout94"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/danish_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/danish_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout94" />
+
+                                <CheckBox
+                                    android:id="@+id/danish_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/danish_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/danish_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/danish_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/danish_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout94" />
+
+                                <CheckBox
+                                    android:id="@+id/danish_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/danish_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/danish_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1573,7 +1814,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1600,7 +1841,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1609,44 +1850,88 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/pran_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/green"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/pran_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/pran_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/pran_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/pran_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/pran_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/pran_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/pran_consumtion_unit_edit_text_layout">
 
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout95"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/pran_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/pran_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout95" />
+
+                                <CheckBox
+                                    android:id="@+id/pran_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/pran_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/pran_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/pran_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/pran_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout95" />
+
+                                <CheckBox
+                                    android:id="@+id/pran_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/pran_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/pran_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1777,7 +2062,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1804,7 +2089,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -1814,42 +2099,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/nido_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/yellow"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/nido_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/nido_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/nido_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/nido_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/nido_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/nido_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/nido_consumtion_unit_edit_text_layout">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout96"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/nido_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/nido_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout96" />
+
+                                <CheckBox
+                                    android:id="@+id/nido_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/nido_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/nido_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/nido_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/nido_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout96" />
+
+                                <CheckBox
+                                    android:id="@+id/nido_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/nido_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/nido_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1980,7 +2311,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
-                                android:text="Gross Unit(gm)"
+                                android:text="Gross Unit(pcs)"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -2007,7 +2338,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:gravity="center"
-                                android:hint="500"
+                                android:hint="2"
                                 android:inputType="number"
                                 android:textColor="@color/orange"
                                 android:textColorHint="@color/ash"
@@ -2017,42 +2348,88 @@
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/others_purpose_text_layout"
-                            android:layout_width="@dimen/text_box_width"
-                            android:layout_height="@dimen/text_box_height"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/black_red"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/others_consumption_unit_text_layout">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginLeft="8dp"
-                                android:text="Purpose"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/others_spinner"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/others_purpose_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/spinner_lay"
-                            app:layout_constraintBottom_toBottomOf="@+id/others_purpose_text_layout"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/others_purpose_text_layout"
-                            app:layout_constraintTop_toTopOf="@+id/others_purpose_text_layout" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/others_consumtion_unit_edit_text_layout">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout97"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_box_height"
+                                    android:background="@color/black_red"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_marginRight="8dp"
+                                        android:text="Purposes"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <CheckBox
+                                    android:id="@+id/others_milk_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Glass of Milk"
+                                    app:layout_constraintEnd_toStartOf="@+id/others_tea_checkbox"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout97" />
+
+                                <CheckBox
+                                    android:id="@+id/others_dessert_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Dessert"
+                                    app:layout_constraintStart_toStartOf="@+id/others_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/others_milk_checkbox" />
+
+
+                                <CheckBox
+                                    android:id="@+id/others_tea_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Tea"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/others_milk_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout97" />
+
+                                <CheckBox
+                                    android:id="@+id/others_others_checkbox"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Others"
+                                    app:layout_constraintStart_toStartOf="@+id/others_tea_checkbox"
+                                    app:layout_constraintTop_toBottomOf="@+id/others_tea_checkbox" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -2225,7 +2602,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_black_red"
                 android:gravity="center"
-                android:hint="Remark"
+                android:hint="Outlet Name"
                 android:textColor="@color/black"
                 android:textColorHint="@color/ash"
                 app:layout_constraintEnd_toEndOf="parent"
